@@ -352,7 +352,7 @@ export default function Page() {
             </div>
             <div className="flex items-center gap-8 text-gray-400">
               <a
-                href="https://interview-buddy-backend.vercel.app"
+                href="https://interview-buddy-backend.vercel.app/docs"
                 className="hover:text-white transition-colors flex items-center gap-2"
               >
                 <ExternalLink className="w-4 h-4" />
