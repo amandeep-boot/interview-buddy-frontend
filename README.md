@@ -1,13 +1,14 @@
 # Interview Buddy Frontend
 
-A modern frontend application for Interview Buddy, built with [Next.js](https://nextjs.org/) and [React](https://react.dev/). This project provides an interactive platform for users to prepare for interviews, connect with mentors, and track their progress.
+A modern, AI-powered chatbot application for Interview Buddy, built with [Next.js](https://nextjs.org/) and [React](https://react.dev/). This project provides an interactive platform for users to prepare for interviews, connect with mentors, and track their progress—all enhanced by intelligent AI-driven conversations and feedback.
 
 ## Features
 
+- 🤖 AI-powered interview preparation chatbot
 - 🚀 Fast and responsive UI with Next.js
 - 👤 User authentication and profile management
 - 📅 Schedule and manage mock interviews
-- 💬 Real-time chat with mentors
+- 💬 Real-time chat with AI
 - 📈 Progress tracking and analytics
 - 🎨 Customizable user dashboard
 
@@ -68,4 +69,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-Made with ❤️ for interview preparation.
+Made with ❤️ and AI for interview preparation.
