@@ -21,18 +21,19 @@ import {
   Star,
 } from "lucide-react"
 import Link from "next/link"
-
+import { useRouter } from "next/navigation"
 export default function Page() {
   const [displayedText, setDisplayedText] = useState("")
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-
+  const currentYear = new Date().getFullYear();
+  const router = useRouter() ; 
   const typewriterText = "Interview Excellence, Powered by AI"
   let stats= [
-              { number: "50K+", label: "Questions Generated", icon: MessageCircle },
-              { number: "2,500+", label: "Success Stories", icon: Users },
-              { number: "<1s", label: "Response Time", icon: Clock },
-              { number: "4.9★", label: "User Rating", icon: Star },
-            ]
+    { number: "50K+", label: "Questions Generated", icon: MessageCircle },
+    { number: "2,500+", label: "Success Stories", icon: Users },
+    { number: "<1s", label: "Response Time", icon: Clock },
+    { number: "4.9★", label: "User Rating", icon: Star },
+  ]
 
   useEffect(() => {
     let index = 0
@@ -83,7 +84,9 @@ export default function Page() {
       statLabel: "Success Stories",
     },
   ]
-
+  const handleStartPrep = ()=>{
+    router.push("/auth/login")
+  }
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
       {/* Animated Background */}
@@ -147,15 +150,16 @@ export default function Page() {
             Advanced AI interview assistant trained on thousands of real interviews. Get instant tailored questions,
             expert analysis, and personalized coaching to strengthen your interview strategy.
           </p>
-          <Link href="/auth/signup">
+          {/* <Link href="#"> */}
             <Button
+              onClick={handleStartPrep}
               size="lg"
               className="bg-primary text-primary-foreground hover:bg-primary/80 text-lg px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-2xl"
             >
               Start Interview Prep
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
-          </Link>
+          {/* </Link> */}
         </div>
       </section>
 
@@ -369,7 +373,7 @@ export default function Page() {
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-border text-center text-muted-foreground">
-            © 2024 Interview Buddy. Powered by Groq AI • Built with Next.js and shadcn/ui.
+            © {currentYear} Interview Buddy. Powered by Groq AI • Built with Next.js and shadcn/ui.
           </div>
         </div>
       </footer>
