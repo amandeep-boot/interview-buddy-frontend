@@ -89,26 +89,26 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden flex items-center justify-center p-4">
+    <div className="min-h-screen bg-white text-black dark:bg-black dark:text-white relative overflow-hidden flex items-center justify-center p-4 transition-colors">
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/20 via-black to-blue-900/20"></div>
-        <div className="absolute top-20 left-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-100/20 via-white to-blue-100/20 dark:from-emerald-900/20 dark:via-black dark:to-blue-900/20"></div>
+        <div className="absolute top-20 left-10 w-96 h-96 bg-emerald-300/10 dark:bg-emerald-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-blue-300/10 dark:bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
       </div>
 
       {/* Back to Home */}
       <Link
         href="/"
-        className="absolute top-6 left-6 z-50 flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+        className="absolute top-6 left-6 z-50 flex items-center gap-2 text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors"
       >
         <ArrowLeft className="w-4 h-4" />
         Back to Home
       </Link>
 
       {/* Sign Up Card */}
-      <Card className="relative bg-black/90 border border-white/20 backdrop-blur-xl w-full max-w-md z-10">
+      <Card className="relative bg-white/90 dark:bg-black/90 border border-black/10 dark:border-white/20 backdrop-blur-xl w-full max-w-md z-10 transition-colors">
         <CardHeader className="text-center pb-6">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-10 h-10 bg-gradient-to-r from-emerald-400 to-blue-500 rounded-lg flex items-center justify-center">
@@ -116,8 +116,8 @@ export default function SignUpPage() {
             </div>
             <h1 className="text-2xl font-bold">Interview Buddy</h1>
           </div>
-          <CardTitle className="text-3xl font-bold text-white">Create Account</CardTitle>
-          <CardDescription className="text-gray-400">
+          <CardTitle className="text-3xl font-bold text-black dark:text-white">Create Account</CardTitle>
+          <CardDescription className="text-gray-500 dark:text-gray-400">
             Join thousands preparing for their dream interviews
           </CardDescription>
         </CardHeader>
@@ -127,7 +127,7 @@ export default function SignUpPage() {
           {error && (
             <Alert className="border-red-500/50 bg-red-500/10">
               <AlertCircle className="h-4 w-4 text-red-500" />
-              <AlertDescription className="text-red-300">{error}</AlertDescription>
+              <AlertDescription className="text-red-700 dark:text-red-300">{error}</AlertDescription>
             </Alert>
           )}
 
@@ -135,7 +135,7 @@ export default function SignUpPage() {
           {success && (
             <Alert className="border-emerald-500/50 bg-emerald-500/10">
               <CheckCircle className="h-4 w-4 text-emerald-500" />
-              <AlertDescription className="text-emerald-300">{success}</AlertDescription>
+              <AlertDescription className="text-emerald-700 dark:text-emerald-300">{success}</AlertDescription>
             </Alert>
           )}
 
@@ -143,7 +143,7 @@ export default function SignUpPage() {
             {/* Name Fields */}
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-300">First Name</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">First Name</label>
                 <div className="relative">
                   <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <Input
@@ -152,14 +152,14 @@ export default function SignUpPage() {
                     placeholder="John"
                     value={formData.firstName}
                     onChange={handleInputChange}
-                    className="bg-white/5 border-white/20 text-white placeholder:text-gray-500 pl-10 focus:border-emerald-400/50 focus:ring-emerald-400/20"
+                    className="bg-black/5 dark:bg-white/5 border-black/10 dark:border-white/20 text-black dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 pl-10 focus:border-emerald-400/50 focus:ring-emerald-400/20"
                     required
                     disabled={isLoading}
                   />
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-300">Last Name</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Last Name</label>
                 <div className="relative">
                   <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <Input
@@ -168,7 +168,7 @@ export default function SignUpPage() {
                     placeholder="Doe"
                     value={formData.lastName}
                     onChange={handleInputChange}
-                    className="bg-white/5 border-white/20 text-white placeholder:text-gray-500 pl-10 focus:border-emerald-400/50 focus:ring-emerald-400/20"
+                    className="bg-black/5 dark:bg-white/5 border-black/10 dark:border-white/20 text-black dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 pl-10 focus:border-emerald-400/50 focus:ring-emerald-400/20"
                     required
                     disabled={isLoading}
                   />
@@ -178,7 +178,7 @@ export default function SignUpPage() {
 
             {/* Email */}
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-300">Email</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <Input
@@ -187,7 +187,7 @@ export default function SignUpPage() {
                   placeholder="john@example.com"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="bg-white/5 border-white/20 text-white placeholder:text-gray-500 pl-10 focus:border-emerald-400/50 focus:ring-emerald-400/20"
+                  className="bg-black/5 dark:bg-white/5 border-black/10 dark:border-white/20 text-black dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 pl-10 focus:border-emerald-400/50 focus:ring-emerald-400/20"
                   required
                   disabled={isLoading}
                 />
@@ -196,7 +196,7 @@ export default function SignUpPage() {
 
             {/* Password */}
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-300">Password</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <Input
@@ -205,14 +205,14 @@ export default function SignUpPage() {
                   placeholder="Create a strong password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  className="bg-white/5 border-white/20 text-white placeholder:text-gray-500 pl-10 pr-10 focus:border-emerald-400/50 focus:ring-emerald-400/20"
+                  className="bg-black/5 dark:bg-white/5 border-black/10 dark:border-white/20 text-black dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 pl-10 pr-10 focus:border-emerald-400/50 focus:ring-emerald-400/20"
                   required
                   disabled={isLoading}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-black dark:hover:text-white"
                   disabled={isLoading}
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -222,7 +222,7 @@ export default function SignUpPage() {
 
             {/* Confirm Password */}
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-300">Confirm Password</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Confirm Password</label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <Input
@@ -231,14 +231,14 @@ export default function SignUpPage() {
                   placeholder="Confirm your password"
                   value={formData.confirmPassword}
                   onChange={handleInputChange}
-                  className="bg-white/5 border-white/20 text-white placeholder:text-gray-500 pl-10 pr-10 focus:border-emerald-400/50 focus:ring-emerald-400/20"
+                  className="bg-black/5 dark:bg-white/5 border-black/10 dark:border-white/20 text-black dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 pl-10 pr-10 focus:border-emerald-400/50 focus:ring-emerald-400/20"
                   required
                   disabled={isLoading}
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-black dark:hover:text-white"
                   disabled={isLoading}
                 >
                   {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -252,16 +252,16 @@ export default function SignUpPage() {
                 id="terms"
                 checked={formData.agreeToTerms}
                 onCheckedChange={(checked) => setFormData((prev) => ({ ...prev, agreeToTerms: checked as boolean }))}
-                className="border-white/20 data-[state=checked]:bg-emerald-500 data-[state=checked]:border-emerald-500"
+                className="border-black/10 dark:border-white/20 data-[state=checked]:bg-emerald-500 data-[state=checked]:border-emerald-500"
                 disabled={isLoading}
               />
-              <label htmlFor="terms" className="text-sm text-gray-400">
+              <label htmlFor="terms" className="text-sm text-gray-600 dark:text-gray-400">
                 I agree to the{" "}
-                <Link href="/terms" className="text-emerald-400 hover:underline">
+                <Link href="/terms" className="text-emerald-600 dark:text-emerald-400 hover:underline">
                   Terms of Service
                 </Link>{" "}
                 and{" "}
-                <Link href="/privacy" className="text-emerald-400 hover:underline">
+                <Link href="/privacy" className="text-emerald-600 dark:text-emerald-400 hover:underline">
                   Privacy Policy
                 </Link>
               </label>
@@ -287,10 +287,10 @@ export default function SignUpPage() {
           {/* Divider */}
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-white/20"></div>
+              <div className="w-full border-t border-black/10 dark:border-white/20"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-black text-gray-400">OR CONTINUE WITH</span>
+              <span className="px-2 bg-white dark:bg-black text-gray-500 dark:text-gray-400">OR CONTINUE WITH</span>
             </div>
           </div>
 
@@ -301,7 +301,7 @@ export default function SignUpPage() {
               variant="outline"
               onClick={handleGoogleSignUp}
               disabled={isLoading}
-              className="border-white/20 text-white hover:bg-white/10 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:hover:scale-100"
+              className="border-black/10 dark:border-white/20 text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:hover:scale-100"
             >
               <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24">
                 <path
@@ -328,7 +328,7 @@ export default function SignUpPage() {
               variant="outline"
               onClick={handleGithubSignUp}
               disabled={isLoading}
-              className="border-white/20 text-white hover:bg-white/10 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:hover:scale-100"
+              className="border-black/10 dark:border-white/20 text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:hover:scale-100"
             >
               <Github className="w-4 h-4 mr-2" />
               GitHub
@@ -336,9 +336,9 @@ export default function SignUpPage() {
           </div>
 
           {/* Sign In Link */}
-          <div className="text-center text-sm text-gray-400">
+          <div className="text-center text-sm text-gray-600 dark:text-gray-400">
             Already have an account?{" "}
-            <Link href="/auth/login" className="text-emerald-400 hover:underline font-medium">
+            <Link href="/auth/login" className="text-emerald-600 dark:text-emerald-400 hover:underline font-medium">
               Sign in
             </Link>
           </div>
