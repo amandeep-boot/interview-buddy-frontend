@@ -26,7 +26,7 @@ export default function Page() {
   const [displayedText, setDisplayedText] = useState("")
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
-  const typewriterText = "Interview Excellence, Powered by AI";
+  const typewriterText = "Interview Excellence, Powered by AI"
   let stats= [
               { number: "50K+", label: "Questions Generated", icon: MessageCircle },
               { number: "2,500+", label: "Success Stories", icon: Users },
