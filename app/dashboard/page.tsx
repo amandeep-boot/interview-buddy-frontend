@@ -153,37 +153,6 @@ export default function DashboardPage() {
             </CardContent>
           </Card>
         </div>
-
-        {/* Session Info */}
-        <Card className="mt-8 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 backdrop-blur-xl">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Calendar className="w-5 h-5" />
-              Session Information
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-2 gap-4 text-sm">
-              <div>
-                <span className="text-gray-500 dark:text-gray-400">Username:</span>
-                <span className="ml-2 text-black dark:text-white">{userSession.username}</span>
-              </div>
-              <div>
-                <span className="text-gray-500 dark:text-gray-400">Login Time:</span>
-                <span className="ml-2 text-black dark:text-white">{new Date(userSession.login_time).toLocaleString()}</span>
-              </div>
-              <div>
-                <span className="text-gray-500 dark:text-gray-400">Token Type:</span>
-                <span className="ml-2 text-black dark:text-white">{userSession.token_type}</span>
-              </div>
-              <div>
-                <span className="text-gray-500 dark:text-gray-400">Remember Me:</span>
-                <span className="ml-2 text-black dark:text-white">{userSession.remember_me ? "Yes" : "No"}</span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
         {/* Quick Actions */}
         <div className="mt-8 grid md:grid-cols-2 gap-6">
           <Card className="bg-gradient-to-r from-emerald-500/10 to-blue-500/10 border border-emerald-400/20 backdrop-blur-xl">

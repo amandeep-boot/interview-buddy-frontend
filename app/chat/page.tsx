@@ -107,8 +107,8 @@ export default function ChatPage() {
         <div className="flex-1 flex flex-col">
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-6 space-y-4">
-            {messages.map((message) => (
-              <MessageBubble key={message.id} message={message} onCopy={copyMessage} />
+            {messages.map((message,idx) => (
+              <MessageBubble key={idx} message={message} onCopy={copyMessage} />
             ))}
             <div ref={messagesEndRef} />
           </div>

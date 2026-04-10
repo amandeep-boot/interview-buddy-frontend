@@ -27,10 +27,21 @@ export default function SignUpPage() {
     confirmPassword: "",
     agreeToTerms: false,
   })
+  const [passwordStrength, setPasswordStrength] = useState({
+    passed: 0,
+    lengthCheck: false,
+    upperCheck: false,  
+    lowerCheck: false,
+    digitCheck: false,
+    specialCheck: false
+  });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (name === "password") {
+      setPasswordStrength(checkPasswordStrength(value));
+    }
     // Clear error when user starts typing
     if (error) setError(null)
   }
@@ -86,6 +97,23 @@ export default function SignUpPage() {
 
   const handleGithubSignUp = () => {
     console.log("GitHub sign up")
+  }
+
+  const checkPasswordStrength = (password: string) => {
+    const lengthCheck = password.length >= 8 ; 
+    const upperCheck = /[A-Z]/.test(password);
+    const lowerCheck = /[a-z]/.test(password);
+    const digitCheck = /[0-9]/.test(password);
+    const specialCheck = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`]/.test(password);
+    const passed = [lengthCheck, upperCheck, lowerCheck, digitCheck, specialCheck ].filter (Boolean).length ; 
+    return {
+      passed,
+      lengthCheck,
+      upperCheck,
+      lowerCheck,
+      digitCheck,
+      specialCheck
+    };  
   }
 
   return (
@@ -218,6 +246,16 @@ export default function SignUpPage() {
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
+              <div className="text-sm text-gray-500 dark:text-gray-400 mt-1"
+              aria-live="polite">
+                <ul className="list-disc list-inside">
+                  <li className={passwordStrength.lengthCheck ? "text-emerald-500 line-through " : "text-gray-500"} >Minimum 8 characters length</li>
+                  <li className={passwordStrength.upperCheck ? "text-emerald-500 line-through" : "text-gray-500"} >Contains uppercase letter</li>
+                  <li className={passwordStrength.lowerCheck ? "text-emerald-500 line-through" : "text-gray-500"} >Contains lowercase letter</li>
+                  <li className={passwordStrength.digitCheck ? "text-emerald-500 line-through" : "text-gray-500"} >Contains digit</li>
+                  <li className={passwordStrength.specialCheck ? "text-emerald-500 line-through" : "text-gray-500"} >Contains special character</li>
+                </ul>
+              </div>
             </div>
 
             {/* Confirm Password */}
@@ -270,7 +308,7 @@ export default function SignUpPage() {
             {/* Submit Button */}
             <Button
               type="submit"
-              disabled={isLoading || !formData.agreeToTerms}
+              disabled={isLoading || !formData.agreeToTerms || passwordStrength.passed < 5}
               className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white font-semibold py-3 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
               {isLoading ? (
