@@ -87,6 +87,9 @@ export default function Page() {
   const handleStartPrep = ()=>{
     router.push("/auth/login")
   }
+  function gotoGithub(){
+    window.open("https://github.com/amandeep-boot/interview-buddy", "_blank");
+  }
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
       {/* Animated Background */}
@@ -123,12 +126,12 @@ export default function Page() {
             <h1 className="text-xl font-bold">Interview Buddy</h1>
           </div>
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="/services" className="text-muted-foreground hover:text-foreground transition-colors">
               Services
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            </Link>
+            <Link href="/about" className="text-muted-foreground hover:text-foreground transition-colors">
               About
-            </a>
+            </Link>
             <Link href="/auth/login">
               <Button variant="outline" className="border-border text-foreground hover:bg-muted/50">
                 Login
@@ -328,7 +331,8 @@ export default function Page() {
             <Button
               size="lg"
               className="bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-primary-foreground font-semibold px-8 py-4 text-lg rounded-full transition-all duration-300 hover:scale-105 shadow-2xl"
-            >
+              onClick={handleStartPrep}
+              >
               Start Free Trial
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
@@ -336,6 +340,7 @@ export default function Page() {
               variant="outline"
               size="lg"
               className="border-border text-foreground hover:bg-muted/50 px-8 py-4 text-lg rounded-full"
+              onClick={gotoGithub}
             >
               <Github className="w-5 h-5 mr-2" />
               View Source
